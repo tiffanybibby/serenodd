@@ -2,6 +2,10 @@ package com.example.serenodd.media;
 
 import lombok.*;
 
+import javax.persistence.*;
+
+@Entity
+@Table
 @ToString
 @Getter
 @Setter
@@ -9,6 +13,18 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Media {
+
+    @Id
+    @SequenceGenerator(
+            name = "media_sequence",
+            sequenceName = "media_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "media_sequence"
+    )
+
     private Long id;
     private String name;
     private String description;
