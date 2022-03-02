@@ -36,8 +36,9 @@ function App() {
             return <Empty />;
         }
         return medias.map((media, index) => {
-            return <p key={index}>{media.id} {media.name}</p>
+            return <p key={index}>{media.id} {media.name} {media.description} {media.source} {media.audio} {media.image} {media.title} {media.likes} {media.dislikes} {media.type} </p>
         });
+
     }
 
     return (
