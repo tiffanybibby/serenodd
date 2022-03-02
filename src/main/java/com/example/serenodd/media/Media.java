@@ -34,5 +34,6 @@ public class Media {
     private String title;
     private Integer likes;
     private Integer dislikes;
+    @Enumerated(EnumType.STRING)
     private Type type;
 }
