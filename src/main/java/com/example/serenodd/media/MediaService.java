@@ -28,18 +28,6 @@ public class MediaService {
         mediaRepository.save(media);
     }
 
-//    @Transactional
-//    public void updateMediaDetails(Long mediaId, String name) {
-//        boolean exists = mediaRepository.existsById(mediaId);
-//        if (!exists) {
-//            throw new IllegalStateException(
-//                    "media with id " + mediaId + " does not exist"
-//            );
-//        }
-//        mediaRepository.updateName(name, mediaId);
-////        mediaRepository.updateDescription(description, mediaId);
-//    }
-
     @Transactional
     public ResponseEntity updateMedia(long mediaId, Media mediaInput){
         boolean exists = mediaRepository.existsById(mediaId);
@@ -65,19 +53,6 @@ public class MediaService {
         return ResponseEntity.ok(media);
     }
 
-
-
-
-    public void deleteMedia(Long mediaId) {
-        boolean exists = mediaRepository.existsById(mediaId);
-        if (!exists) {
-            throw new IllegalStateException(
-                    "media with id " + mediaId + " does not exist"
-            );
-        }
-        mediaRepository.deleteMediaById(mediaId);
-    }
-
     @Transactional
     public ResponseEntity patchMedia(long mediaId, Map<String, Object> changes) {
         Media media = mediaRepository.findById(mediaId).get();
@@ -100,4 +75,16 @@ public class MediaService {
         mediaRepository.save(media);
         return ResponseEntity.ok(media);
     }
+
+    @Transactional
+    public void deleteMedia(Long mediaId) {
+        boolean exists = mediaRepository.existsById(mediaId);
+        if (!exists) {
+            throw new IllegalStateException(
+                    "media with id " + mediaId + " does not exist"
+            );
+        }
+        mediaRepository.deleteMediaById(mediaId);
+    }
+
 }
